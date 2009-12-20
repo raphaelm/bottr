@@ -15,7 +15,14 @@ $self->password = $password;
 $self->resource = $resource;
 
 $self->auth_id	= "auth_" . md5(time() . microtime());
-$self->sendXML("<iq type='set' id='{$self->auth_id}'><query xmlns='jabber:iq:auth'><username>".htmlspecialchars($username)."</username><resource>".htmlspecialchars($resource)."</resource><password>".htmlspecialchars($password)."</password></query></iq>\n");
+
+$authentication = $self->sendXML("<iq type='set' id='{$self->auth_id}'><query xmlns='jabber:iq:auth'><username>".htmlspecialchars($username)."</username><resource>".htmlspecialchars($resource)."</resource><password>".htmlspecialchars($password)."</password></query></iq>\n");
+
+$xml = simplexml_load_string($authentication);
+if(isset($xml->error)){
+	trigger_error('Authentication failed!');
+	return false;
+}
 
 if($self->jid == '') $self->jid = $username.'@'.$self->server;
 if(defined('DEBUG')) echo "JID: ".$self->jid."\n";

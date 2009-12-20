@@ -4,16 +4,14 @@
 		<name>PING-Modul</name>
 		<regex>/^ping$/i</regex>
 		<php>
-			<file>modules/ping.php</file>
-			<function>mod_ping</function>
+			<function>ping</function>
 		</php>
 	</module>
 	<module event='message'>
 		<name>Test-Modul RAW</name>
 		<regex>/^raw/i</regex>
 		<php>
-			<file>modules/raw.php</file>
-			<function>mod_raw</function>
+			<function>raw</function>
 		</php>
 		<adminonly>true</adminonly>
 	</module>
@@ -21,16 +19,21 @@
 		<name>Reload Modules</name>
 		<regex>/^reload modules$/i</regex>
 		<php>
-			<file>modules/reloadmodules.php</file>
-			<function>mod_reloadmodules</function>
+			<function>reloadmodules</function>
 		</php>
 		<adminonly>true</adminonly>
 	</module>
 	<module event='subscribe'>
 		<name>Accept all subscribes</name>
 		<php>
-			<file>modules/acceptthemall.php</file>
-			<function>mod_acceptthemall</function>
+			<function>acceptthemall</function>
+		</php>
+	</module>
+	<module event='message'>
+		<name>Terminate</name>
+		<regex>/^terminate$/i</regex>
+		<php>
+			<function>exit</function>
 		</php>
 	</module>
 </bottrconf>

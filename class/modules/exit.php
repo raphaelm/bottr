@@ -1,0 +1,3 @@
+<?php
+$bottr->terminate();
+?>

@@ -85,6 +85,7 @@ class pseudoclass {
 			// Funktion erstellen
 			$src = str_replace(array('<?php', '?>'), array('', ''), $src);
 			
+			if (DEBUG) echo 'load: '. $this->the_name_of_class.'->'.$func_name."\n";
 			file_put_contents('cache/class_'.$this->the_name_of_class.'_function_'.$func_name.'_'.$this->function_builds[$func_name].'.php', '<?php function class_'.$this->the_name_of_class.'_'.$func_name.'_'.$this->function_builds[$func_name].'(&$self, $argumente) {'."\n".'global $loaded_classes'.$this->add_globals.';'."\n".'eval(\'global \'.implode(\', \', $loaded_classes).\';\');'."\n".$src."\n".'} ?>');
 			include('cache/class_'.$this->the_name_of_class.'_function_'.$func_name.'_'.$this->function_builds[$func_name].'.php');
 			unlink('cache/class_'.$this->the_name_of_class.'_function_'.$func_name.'_'.$this->function_builds[$func_name].'.php');
@@ -98,6 +99,8 @@ class pseudoclass {
 		
 	
 	public function __call($name, $args) {
+		// echo 'call: '. $this->the_name_of_class.'->'.$name."\n";
+		
 		if (isset($this->function_builds[strtolower($name)])) {
 			
 			if ($this->function_builds[strtolower($name)] == 0) {

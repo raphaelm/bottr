@@ -1,8 +1,5 @@
-- Module, die sich selbst neu laden
-- Nils tolle Loader-Klasse
 - Admin-Erkennung
 - Modulreaktionen
-	- subscribe
 	- error
 	- iq=get -> Version und so Zeugs
 	- unsubscribe
