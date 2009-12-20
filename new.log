@@ -1,0 +1,2 @@
+<iq from='rami-test1@nomoketo.de/bot' to='rami-test1@nomoketo.de/bot' id='push' type='set'><query xmlns='jabber:iq:roster'><item subscription='none' jid='rami@jabber.ccc.de'/></query></iq>
+

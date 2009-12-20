@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<bottrconf>
+	<module event='message'>
+		<name>PING-Modul</name>
+		<regex>/^ping$/i</regex>
+		<php>
+			<file>modules/ping.php</file>
+			<function>mod_ping</function>
+		</php>
+	</module>
+	<module event='message'>
+		<name>Test-Modul RAW</name>
+		<regex>/^raw/i</regex>
+		<php>
+			<file>modules/raw.php</file>
+			<function>mod_raw</function>
+		</php>
+		<adminonly>true</adminonly>
+	</module>
+	<module event='message'>
+		<name>Reload Modules</name>
+		<regex>/^reload modules$/i</regex>
+		<php>
+			<file>modules/reloadmodules.php</file>
+			<function>mod_reloadmodules</function>
+		</php>
+		<adminonly>true</adminonly>
+	</module>
+	<module event='subscribe'>
+		<name>Accept all subscribes</name>
+		<php>
+			<file>modules/acceptthemall.php</file>
+			<function>mod_acceptthemall</function>
+		</php>
+	</module>
+</bottrconf>

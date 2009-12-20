@@ -1,0 +1,23 @@
+- Module, die sich selbst neu laden
+- Nils tolle Loader-Klasse
+- Admin-Erkennung
+- Modulreaktionen
+	- subscribe
+	- error
+	- iq=get -> Version und so Zeugs
+	- unsubscribe
+- vCards abrufen
+- Dateiversand? ausgehend (generiertes zeug)? eingehend (Imagehoster-Client?)?
+- OTR?
+- Gruppenchats?
+
+
+###################### NOTIZEN
+
+Eingehende XMLs, die noch nich geparst werden:
+
+<iq from='rami-test1@nomoketo.de/bot' to='rami-test1@nomoketo.de/bot' id='push' type='set'><query xmlns='jabber:iq:roster'><item subscription='from' jid='rami@jabber.ccc.de'/></query></iq>
+
+<iq from='rami-test1@nomoketo.de/bot' to='rami-test1@nomoketo.de/bot' id='push' type='set'><query xmlns='jabber:iq:roster'><item subscription='none' jid='rami@jabber.ccc.de'/></query></iq>
+
+<presence from='rami-test1@nomoketo.de/bot' to='rami-test1@nomoketo.de/bot'><status>bla</status></presence>
