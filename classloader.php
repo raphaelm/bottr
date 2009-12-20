@@ -98,9 +98,25 @@ class pseudoclass {
 		
 	
 	public function __call($name, $args) {
-
-		
-		
+		if (isset($this->function_builds[strtolower($name)])) {
+			
+			if ($this->function_builds[strtolower($name)] == 0) {
+				if ($this->add_function(strtolower($name))) {
+					flush();
+					$return = call_user_func('class_'.$this->the_name_of_class.'_'.$name.'_'.$this->function_builds[strtolower($name)], $this, $args);
+				}
+			} else {
+				// Dann können wir sie ja einfach aufrufen
+				$return = call_user_func('class_'.$this->the_name_of_class.'_'.$name.'_'.$this->function_builds[strtolower($name)], $this, $args);
+			}
+			
+			return $return;
+			
+		} else {
+			// Nicht ändern! Der else-Teil soll die Datei NICHT nachladen!
+			trigger_error('Funktion <strong>'.$this->the_name_of_class.'->'.$name.'()</strong> existiert nicht', E_USER_WARNING);
+		}
+		return false;
 	}
 }
 
