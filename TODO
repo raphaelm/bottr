@@ -14,8 +14,4 @@
 
 Eingehende XMLs, die noch nich geparst werden:
 
-<iq from='rami-test1@nomoketo.de/bot' to='rami-test1@nomoketo.de/bot' id='push' type='set'><query xmlns='jabber:iq:roster'><item subscription='from' jid='rami@jabber.ccc.de'/></query></iq>
-
-<iq from='rami-test1@nomoketo.de/bot' to='rami-test1@nomoketo.de/bot' id='push' type='set'><query xmlns='jabber:iq:roster'><item subscription='none' jid='rami@jabber.ccc.de'/></query></iq>
-
-<presence from='rami-test1@nomoketo.de/bot' to='rami-test1@nomoketo.de/bot'><status>bla</status></presence>
+siehe new.log

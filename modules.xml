@@ -36,4 +36,11 @@
 			<function>exit</function>
 		</php>
 	</module>
+	<module event='message'>
+		<name>Restart</name>
+		<regex>/^restart$/i</regex>
+		<php>
+			<function>restart</function>
+		</php>
+	</module>
 </bottrconf>

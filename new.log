@@ -12,3 +12,13 @@
 
 <iq from='rami-test1@nomoketo.de/bot' to='rami-test1@nomoketo.de/bot' id='push' type='set'><query xmlns='jabber:iq:roster'><item subscription='from' jid='rami@jabber.ccc.de'/></query></iq>
 
+<message from='rami@jabber.ccc.de/linux' to='rami-test1@nomoketo.de' type='chat' id='purple3527764a'><active xmlns='http://jabber.org/protocol/chatstates'/></message>
+
+<message from='rami@jabber.ccc.de/linux' to='rami-test1@nomoketo.de' type='chat' id='purple35277653'><paused xmlns='http://jabber.org/protocol/chatstates'/></message>
+
+<message from='rami@jabber.ccc.de/linux' to='rami-test1@nomoketo.de' type='chat' id='purple35277655'><active xmlns='http://jabber.org/protocol/chatstates'/></message>
+
+<message from='rami@jabber.ccc.de/linux' to='rami-test1@nomoketo.de' type='chat' id='purple3527765e'><active xmlns='http://jabber.org/protocol/chatstates'/></message>
+
+<message from='rami@jabber.ccc.de/linux' to='rami-test1@nomoketo.de' type='chat' id='purple35277665'><active xmlns='http://jabber.org/protocol/chatstates'/></message>
+
