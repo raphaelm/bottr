@@ -23,7 +23,15 @@
 		</php>
 		<adminonly>true</adminonly>
 	</module>
-	<module event='subscribe'>
+	<module event='message'>
+		<name>Reload Function</name>
+		<regex>/^reload_func (.*) (.*)/i</regex>
+		<php>
+			<function>reload_func</function>
+		</php>
+		<adminonly>true</adminonly>
+	</module>
+	<module event='presence_subscribe'>
 		<name>Accept all subscribes</name>
 		<php>
 			<function>acceptthemall</function>
@@ -41,6 +49,13 @@
 		<regex>/^restart$/i</regex>
 		<php>
 			<function>restart</function>
+		</php>
+	</module>
+	<module event='message'>
+		<name>Test</name>
+		<regex>/^test$/i</regex>
+		<php>
+			<function>test</function>
 		</php>
 	</module>
 </bottrconf>

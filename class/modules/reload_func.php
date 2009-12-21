@@ -3,7 +3,7 @@ $bottr      = &$argumente[0];
 $parameters = $argumente[1];
 
 preg_match('/^reload_func ([^ ]*) ([^ ]*)$/i', $parameters['body'], $treffer);
-if (!in_array($treffer[1], array('modules', 'bottr'))) {
+if (!in_array($treffer[1], array('modules', 'bottr', 'db'))) {
 	$bottr->sendMessage($parameters['from'], 'Diese Klasse kann nicht verändert werden.');
 	return;
 }

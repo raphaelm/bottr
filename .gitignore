@@ -1,5 +1,5 @@
 *passwd
 bot.php
-cronjob
+cronjob.php
 *.log
 web/*
