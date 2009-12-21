@@ -22,3 +22,9 @@
 
 <message from='rami@jabber.ccc.de/linux' to='rami-test1@nomoketo.de' type='chat' id='purple35277665'><active xmlns='http://jabber.org/protocol/chatstates'/></message>
 
+<iq from='bottr@nomoketo.de/bot' to='bottr@nomoketo.de/bot' id='push' type='set'><query xmlns='jabber:iq:roster'><item subscription='from' jid='nomoketo@nomoketo.de'/></query></iq>
+
+<iq from='bottr@nomoketo.de/bot' to='bottr@nomoketo.de/bot' id='push' type='set'><query xmlns='jabber:iq:roster'><item subscription='from' jid='rami@jabber.ccc.de'/></query></iq>
+
+<iq from='rami@jabber.ccc.de/linux' to='rami-test1@nomoketo.de/bot' type='get' id='purple352777ee'><query xmlns='jabber:iq:version'/></iq>
+
