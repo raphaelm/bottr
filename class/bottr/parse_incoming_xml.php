@@ -1,5 +1,5 @@
 <?php
-$contents = (isset($argumente[0])) ? trim($argumente[0]) : false;
+$contents = (isset($argumente[0])) ? trim($argumente[0]) : $self->incoming_buffer;
 
 // Ist der Stream tot?
 if(strpos($contents, '</stream:stream>') !== false){
@@ -31,7 +31,8 @@ if(substr($contents, -2) == '/>' && strpos($contents, '<',1) === false){
 	if($closetag !== ''){
 		$pos = strpos($contents, $closetag);
 		if($pos === false){
-			$self->debug('Parser: verkrüppeltes XML: '.$contents);
+			//$self->debug('Parser: verkrüppeltes XML (kommt noch was?): '.$contents); # i think we don't need it normally
+			return false;
 		}else{
 			$after = substr($contents, ($pos + strlen($closetag)));
 		}
@@ -166,5 +167,8 @@ if(substr($contents, 0, 8) == '<message'){ // <message
 }
 
 if(isset($after) && strlen($after > 0)){
-	$self->parse_incoming_xml($after);
+	$self->incoming_buffer = $after;
+	$self->parse_incoming_xml();
 }
+
+$self->incoming_buffer = '';

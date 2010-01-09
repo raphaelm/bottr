@@ -25,6 +25,7 @@ while($self->connected){
 		}
 	}
 	if(defined('DEBUG')) echo "Rec: ".$contents."\n";
-	$self->parse_incoming_xml($contents);
+	$self->incoming_buffer .= $contents;
+	$self->parse_incoming_xml();
 }
 ?>

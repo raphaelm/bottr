@@ -1,0 +1,24 @@
+[currently only German. Maybe I'll write an English readme file later]
+
+bottr - http://bottr.nomoketo.de/
+(c) 2009 Raphael Michel & Nils Martin Klünder
+
+########## BOTTR #######################################################
+1. bottr ist ein freier Jabber-Bot-Kern mit dem Ziel, eine möglichst
+   vollständige Unterstützung des XMPP-Protokolls in PHP zu
+   implementieren. Er ist vollständig modulbasiert erweiterbar.
+2. bottr ist eine Instanz dieses Bots mit zusätzlichen Closed-Source-
+   Modulen, zu erreichen unter der JID bottr@nomoketo.de.
+
+########## LINKS #######################################################
+Website            http://bottr.nomoketo.de/
+Wiki               http://bottr.nomoketo.de/docs/
+Bugtracker         http://bugs.geeksfactory.de/?project_id=18
+
+########## TEAM ########################################################
+Raphael Michel       Kern-Entwicklung (XMPP-Protokoll), Modulentwicklung
+Nils Martin Klünder  Modulentwicklung, Bereitstellung des "Classloaders"
+
+########## LIZENZ ######################################################
+bottr steht standardmäßig unter der GNU Affero General Public License.
+Ausnahmen auf Anfrage.

@@ -2,7 +2,7 @@
 <bottrconf>
 	<module event='message'>
 		<name>PING-Modul</name>
-		<regex>/^ping$/i</regex>
+		<regex>/^ping/i</regex>
 		<php>
 			<function>ping</function>
 		</php>
@@ -57,5 +57,13 @@
 		<php>
 			<function>test</function>
 		</php>
+	</module>
+	<module event='message'>
+		<name>Debug switch</name>
+		<regex>/^debug$/i</regex>
+		<php>
+			<function>debug</function>
+		</php>
+		<adminonly>true</adminonly>
 	</module>
 </bottrconf>

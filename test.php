@@ -4,9 +4,10 @@ ini_set('display_errors', '1');
 include('classloader.php');
 define('DEBUG', 1);
 
-// Datenbank
+/*// Datenbank
 $db = new pseudoclass('database');
 $db->init();
+// no database class in open source and in test version, sorry! */
 
 $debug_recipients = array(
 	// Empfängername			// Derzeit aktiviert
