@@ -43,6 +43,7 @@
 		<php>
 			<function>exit</function>
 		</php>
+		<adminonly>true</adminonly>
 	</module>
 	<module event='message'>
 		<name>Restart</name>

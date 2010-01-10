@@ -8,7 +8,10 @@ $paramtoregex = (isset($argumente[2])) ? $argumente[2] : false;
 if(!isset($self->registered_modules[$event])) return true;
 foreach($self->registered_modules[$event] as $module){
 	if(isset($module['regex']) && $paramtoregex && !preg_match($module['regex'], $paramtoregex)) continue;
-	if(isset($module['php'])){
+	if(isset($module['adminonly']) && $module['adminonly'] == true && isset($parameters['from']) && !$self->isAdmin($parameters['from'])){
+		$self->debug($parameters['from'].' isAdmin FAILED.');
+		continue;
+	}elseif(isset($module['php'])){
 		call_user_func(array($modules, $module['php']['function']), $self, $parameters);
 	}
 }
