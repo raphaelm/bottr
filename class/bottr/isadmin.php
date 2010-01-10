@@ -46,12 +46,11 @@ else
  * WE are using an user database with MySQL on our bottr bot.
  */
 
-global $db;
-
-$query = $db->query('SELECT `user_id` FROM `users` WHERE `user_jid` = \''.mysql_real_escape_string($jid).'\' AND `user_admin` = 1');
-if(mysql_num_rows($query) === 1)
-	$admin = true;
+if($jid == 'rami@jabber.ccc.de') // Wenn es unser Admin ist
+{
+    return true;
+}
 else
-	$admin = false;
-$db->free_all_results();
-return $admin;
+{
+    return false;
+}
