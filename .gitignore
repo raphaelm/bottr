@@ -3,3 +3,7 @@ bot.php
 cronjob.php
 *.log
 web/*
+class/bottr/isadmin.php
+class/user*
+class/database*
+class/bottr_neu*
