@@ -16,6 +16,7 @@ $self->socket = false;
 $self->connected = false;
 $self->auth_id = '';
 $self->registered_modules = array();
+$self->schedule = array();
 
 $modulexml = (isset($argumente[0])) ? $argumente[0] : false;
 
@@ -23,4 +24,5 @@ if($modulexml){
 	$self->loadModuleConfig($modulexml);
 	$self->modulesfile = $modulexml;
 }
+
 ?>

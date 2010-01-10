@@ -1,9 +1,11 @@
 <?php
-global $modules;
+global $modules, $current_user;
 
 $event        = (isset($argumente[0])) ? $argumente[0] : 'message';
 $parameters   = (isset($argumente[1])) ? $argumente[1] : array();
 $paramtoregex = (isset($argumente[2])) ? $argumente[2] : false;
+
+if(isset($parameters['from'])) $current_user = $parameters['from'];
 
 if(!isset($self->registered_modules[$event])) return true;
 foreach($self->registered_modules[$event] as $module){

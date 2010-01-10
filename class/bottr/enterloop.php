@@ -23,6 +23,12 @@ while($self->connected){
 			$_h_next = $now+3600;
 			$self->callModules("everyhour", array());
 		}
+		foreach($self->schedule as $key => $schedule){
+			if($now > $schedule['timestamp']){
+				call_user_func_array($schedule['callback'], $schedule['param_arr']);
+				unset($self->schedule[$key]);
+			}
+		}
 	}
 	if(defined('DEBUG')) echo "Rec: ".$contents."\n";
 	$self->incoming_buffer .= $contents;
