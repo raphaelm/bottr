@@ -27,7 +27,9 @@ if(isset($xml->error)){
 if($self->jid == '') $self->jid = $username.'@'.$self->server.'/'.$resource;
 if(defined('DEBUG')) echo "JID: ".$self->jid."\n";
 
-if(file_exists('presence.xml'))
-	$self->sendXML(file_get_contents('presence.xml'));
+if(file_exists('presence.dat')){
+	$parts = explode("#", file_get_contents('presence.xml'));
+	$self->sendPresence(trim($parts[0]), trim($parts[1]));
+}
 
 return true;
