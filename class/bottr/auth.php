@@ -28,7 +28,7 @@ if($self->jid == '') $self->jid = $username.'@'.$self->server.'/'.$resource;
 if(defined('DEBUG')) echo "JID: ".$self->jid."\n";
 
 if(file_exists('presence.dat')){
-	$parts = explode("#", file_get_contents('presence.xml'));
+	$parts = explode("#", file_get_contents('presence.dat'));
 	$self->sendPresence(trim($parts[0]), trim($parts[1]));
 }
 

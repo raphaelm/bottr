@@ -25,7 +25,7 @@ if(substr($contents, 0, 8) == '<message'){ // <message
 	$closetag = '?>';
 }
 
-if(substr($contents, -2) == '/>' && strpos($contents, '<',1) === false){
+if((substr($contents, -2) == '/>' || substr($contents, -3) == '/ >') && strpos($contents, '<',1) === false){
 	$code = $contents;
 }else{
 	if($closetag !== ''){
@@ -39,7 +39,9 @@ if(substr($contents, -2) == '/>' && strpos($contents, '<',1) === false){
 	}
 	$code = substr($contents, 0, (1+$pos + strlen($closetag)));
 }
-
+if(substr($code, -1) == '<'){
+	$code = substr($code, 0, strlen($code)-1);
+}
 // Jetzt geht der Spaß erst los!
 if(substr($contents, 0, 8) == '<message'){ // <message
 	// Lade String nach SimpleXML
