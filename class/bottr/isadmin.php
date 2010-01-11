@@ -46,11 +46,6 @@ else
  * WE are using an user database with MySQL on our bottr bot.
  */
 
-if($jid == 'rami@jabber.ccc.de') // Wenn es unser Admin ist
-{
-    return true;
-}
-else
-{
-    return false;
-}
+global $user; 
+$userdata = $user->getuserdata($jid);
+return ($userdata['user_admin'] == '1');

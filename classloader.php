@@ -66,7 +66,7 @@ class pseudoclass {
 					return false;
 				}
 			} else {
-				trigger_error('Syntaxfehler in neu zu ladender Funktion <strong>'.$this->the_name_of_class.'->'.$func_name.'()</strong>', E_USER_WARNING);
+				trigger_error($output.'Syntaxfehler in neu zu ladender Funktion <strong>'.$this->the_name_of_class.'->'.$func_name.'()</strong>', E_USER_WARNING);
 				if (isset($this->function_builds[$func_name])) unset($this->function_builds[$func_name]);
 				return false;
 			}
@@ -102,7 +102,7 @@ class pseudoclass {
 		// echo 'call: '. $this->the_name_of_class.'->'.$name."\n";
 
 		if (isset($this->function_builds[strtolower($name)])) {
-
+			$return = false;
 			if ($this->function_builds[strtolower($name)] == 0) {
 				if ($this->add_function(strtolower($name))) {
 					flush();
@@ -125,7 +125,7 @@ class pseudoclass {
 
 // Parse-Check Funktion
 function parse_check($file) {
-	$command = 'php -l '.escapeshellarg($file);
+	$command = 'php5 -l '.escapeshellarg($file);
 	$output = shell_exec($command);
 	return $output;
 }

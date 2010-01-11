@@ -17,7 +17,9 @@ if (isset($self->thecache[$category][$name])) {
 	$bottr->donotexecutesoon($self->thecache[$category][$name]['token']);
 }
 
-$token = $bottr->executesoon(time()+$duration, array($self, 'delfromcache'), array($category, $name));
+$bottr->debug($category.'->'.$name.' wurde gecacht.');
+
+$token = $bottr->executesoon(time()+$duration, array($self, 'del'), array($category, $name));
 $self->thecache[$category][$name] = array('token'=>$token,'data'=>$data);
 
 return true;

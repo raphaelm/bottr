@@ -7,6 +7,8 @@ global $bottr;
 $category = $argumente[0];
 $name = $argumente[1];
 
+$bottr->debug($category.'->'.$name.' wurde aus dem cache gelöscht.');
+
 if (isset($self->thecache[$category][$name])) {
 	$bottr->donotexecutesoon($self->thecache[$category][$name]['token']);
 	unset($self->thecache[$category][$name]);
