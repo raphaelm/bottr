@@ -84,7 +84,7 @@ if(substr($contents, 0, 8) == '<message'){ // <message
 	$attr = $xml->attributes();
 
 	$type = isset($attr->type) ? $attr->type : false;
-	$module_parameters['from'] = isset($attr->from) ? trim($attr->from) : false;
+		$module_parameters['from'] = isset($attr->from) ? trim($attr->from) : false;
 	$module_parameters['to'] = isset($attr->to) ? trim($attr->to) : false;
 
 	if($type == 'error')
@@ -168,9 +168,9 @@ if(substr($contents, 0, 8) == '<message'){ // <message
 	// KEINE BEWEGUNG!
 }
 
-if(isset($after) && strlen($after > 0)){
+if(isset($after) && strlen($after) > 0){
 	$self->incoming_buffer = $after;
-	$self->parse_incoming_xml();
+	$self->parse_incoming_xml($after);
 }
 
 $self->incoming_buffer = '';

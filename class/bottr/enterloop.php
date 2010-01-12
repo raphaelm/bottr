@@ -7,7 +7,8 @@ while($self->connected){
 	$contents = "";
 	while($contents == ""){
 		usleep(50);
-		$contents .= fgets($self->socket, 16384);
+		$new = fgets($self->socket, 16384);
+		$contents .= $new;
 
 		// Minute-Triggers
 		$now = microtime(1);

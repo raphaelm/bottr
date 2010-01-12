@@ -14,6 +14,7 @@ foreach($self->registered_modules[$event] as $module){
 		$self->debug($parameters['from'].' isAdmin FAILED.');
 		continue;
 	}elseif(isset($module['php'])){
+		if(defined('DEBUG')) echo "Call Module: modules->".$module['php']['function']."\n";
 		call_user_func(array($modules, $module['php']['function']), $self, $parameters);
 	}
 }

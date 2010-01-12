@@ -1,10 +1,32 @@
 <?php
 $bottr      = &$argumente[0];
 $parameters = $argumente[1];
+if(trim(substr($parameters['body'], 9)) == '')
+	$args = array();
+else
+	$args = explode(' ', trim(substr($parameters['body'], 9)));
 
-preg_match('/^raw ?([^ ]*) (.*)$/i', $parameters['body'], $treffer);
-sendPresence($status, $show = '')
-$raw = $bottr->sendXML($treffer[1], (substr($parameters['body'], 3, 1) == 'w'));
-$bottr->sendMessage($parameters['from'], 'Raw XML sent.'.((substr($parameters['body'], 3, 1) == 'w') ? ' Answer: '.$raw : ''));
-$bottr->sendSubscribed($parameters['from']);
-$bottr->sendMessage($parameters['from'], 'Hallo, ich bin bottr! Schön, dich kennen zu lernen ;-)');
+if(count($args) == 0){
+	$bottr->sendMessage($parameters['from'], "Syntax (3 Möglicgkeiten):\nsetstatus <type> <status>\nsetstatus <status>\nsetstatus <type>\n<type> kann sein: chat (\"online\"; alias: online), dnd (\"beschäftigt\"; alias: busy), away (\"abwesend\"; alias: afk) oder xa (eine Art \"erweitertes\" away)\n<status> kann auch Leerzeichen enthalten, du musst den Parameter nicht in Anführungszeichen einschließen!");
+	return true;
+}
+
+$types = array( // some aliases
+'chat' => 'chat',
+'online' => 'chat',
+'dnd' => 'dnd',
+'busy' => 'dnd',
+'away' => 'away',
+'afk' => 'away',
+'xa' => 'xa');
+
+if(isset($types[$args[0]])){
+	$type = $types[$args[0]];
+	unset($args[0]);
+	$status = join(' ', $args);
+}else{
+	$status = trim(substr($parameters['body'], 9));
+	$type = 'chat';
+}
+
+$bottr->sendPresence($status, $type);
