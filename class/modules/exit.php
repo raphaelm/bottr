@@ -1,3 +1,3 @@
 <?php
-$bottr->terminate();
+$bottr->terminate(42);
 ?>
