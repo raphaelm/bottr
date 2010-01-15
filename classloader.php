@@ -11,7 +11,7 @@ class pseudoclass {
 	private $the_name_of_class = false;
 
 	// Namen, unter denen Funktionen erreichbar sind
-	private $function_builds = array();
+	public $function_builds = array();
 
 	// Alle Variablen, die die Klasse sonst noch braucht.
 	// $this wird umgeleitet.
@@ -31,7 +31,7 @@ class pseudoclass {
 
 		// Ordner auslesen und Klasse zusammenbauen
 		if (!$dir = @opendir('class/'.$name)) {
-			trigger_error('Klasse <strong>'.$name.'</strong> kann nicht geladen werden', E_USER_WARNING);
+			trigger_error('Klasse <strong>'.$name.'</strong> kann nicht geladen werden (Directory not found).', E_USER_WARNING);
 			return;
 		}
 
@@ -57,7 +57,15 @@ class pseudoclass {
 		if ($doit) {
 			// Parse Check an Funktion durchführen
 			$output = parse_check('class/'.$this->the_name_of_class.'/'.$func_name.'.php');
-			if (strpos($output, 'No syntax errors detected in') !== false) {
+			if (strpos($output, 'No syntax errors detected in') !== false || // wenn keine Fehler gefunden wurden
+				strpos($output, 'in') === false) { // wenn keine fehlermeldung kam
+												   // ("in" kommt in allen vor, denke ich),
+												   // ist PHP-CLI überlastet aber hier geht es
+												   // wahrscheinlich trotzdem noch!
+												   // Und wenn dann doch ein Parse Error drin ist
+												   // und der Bot abstürzt - bei vollem RAM ist das
+												   // ja eigentlich sogar gewollt.
+
 				if (strpos($src, '$'.$this->the_name_of_class.'-') !== false) {
 					trigger_error('$this/$self-Fehler in neu zu ladender Funktion <strong>'.$this->the_name_of_class.'->'.$func_name.'()</strong> (Zugriff auf eigene Variable)', E_USER_WARNING);
 					return false;
@@ -66,7 +74,7 @@ class pseudoclass {
 					return false;
 				}
 			} else {
-				trigger_error($output.'Syntaxfehler in neu zu ladender Funktion <strong>'.$this->the_name_of_class.'->'.$func_name.'()</strong>', E_USER_WARNING);
+				trigger_error('Syntaxfehler in neu zu ladender Funktion <strong>'.$this->the_name_of_class.'->'.$func_name.'()</strong>. Ausgabe von PHP: '.$output, E_USER_WARNING);
 				if (isset($this->function_builds[$func_name])) unset($this->function_builds[$func_name]);
 				return false;
 			}
@@ -117,7 +125,7 @@ class pseudoclass {
 
 		} else {
 			// Nicht ändern! Der else-Teil soll die Datei NICHT nachladen!
-			trigger_error('Funktion <strong>'.$this->the_name_of_class.'->'.$name.'()</strong> existiert nicht', E_USER_WARNING);
+			trigger_error('Funktion <strong>'.$this->the_name_of_class.'->'.$name.'()</strong> existiert nicht. Wenn sie erst nach dem letzten Reboot angelegt wurde, musst du sie manuell reloaden!', E_USER_WARNING);
 		}
 		return false;
 	}
