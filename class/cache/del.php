@@ -1,5 +1,5 @@
 <?php
-// 
+//
 // SYNTAX
 // del(str category, str name);
 //
@@ -14,7 +14,7 @@ if (isset($self->thecache[$category][$name])) {
 	unset($self->thecache[$category][$name]);
 }
 
-if (count($self->thecache[$category]) == 0) {
+if (isset($self->thecache[$category]) && count($self->thecache[$category]) == 0) {
 	unset($self->thecache[$category]);
 }
 
