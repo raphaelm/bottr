@@ -2,7 +2,7 @@
 $contents = (isset($argumente[0])) ? trim($argumente[0]) : $self->incoming_buffer;
 
 // Ist der Stream tot?
-if(strpos($contents, '</stream:stream>') !== false){
+if(strpos($contents, '</stream:stream>') !== false || strpos($contents, '</stream:error>') !== false){
 	$self->connected = false;
 	$self->terminate();
 }
