@@ -27,6 +27,9 @@ if(!$self->socket){
 	return false;
 }
 $self->connected = true;
-$self->sendXML("<?xml version='1.0' encoding='UTF-8' ?" . "><stream:stream to='{$self->server}' xmlns='jabber:client' xmlns:stream='http://etherx.jabber.org/streams'>\n");
+$self->sendXML("<?xml version='1.0' encoding='UTF-8' ?" . "><stream:stream to='{$self->server}' xmlns='jabber:client' xmlns:stream='http://etherx.jabber.org/streams'>\n", true);
+
+
+$self->callModules('startup_after_connect');
 return true;
 ?>

@@ -16,11 +16,12 @@ $self->resource = $resource;
 
 $self->auth_id	= "auth_" . md5(time() . microtime());
 
-$authentication = $self->sendXML("<iq type='set' id='{$self->auth_id}'><query xmlns='jabber:iq:auth'><username>".htmlspecialchars($username)."</username><resource>".htmlspecialchars($resource)."</resource><password>".htmlspecialchars($password)."</password></query></iq>\n");
+$authentication = $self->sendXML("<iq type='set' id='{$self->auth_id}'><query xmlns='jabber:iq:auth'><username>".htmlspecialchars($username)."</username><resource>".htmlspecialchars($resource)."</resource><password>".htmlspecialchars($password)."</password></query></iq>\n", true);
 
 $xml = simplexml_load_string($authentication);
 if(isset($xml->error)){
 	trigger_error('Authentication failed!');
+	$self->callModules('startup_after_auth_failed');
 	return false;
 }
 
@@ -32,4 +33,5 @@ if(file_exists('presence.dat')){
 	$self->sendPresence(trim($parts[0]), trim($parts[1]));
 }
 
+$self->callModules('startup_after_auth');
 return true;
