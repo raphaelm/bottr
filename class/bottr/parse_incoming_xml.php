@@ -52,7 +52,7 @@ if(substr($contents, 0, 8) == '<message'){ // <message
 	}
 	$attr = $xml->attributes();
 
-	if(isset($xml->body)){
+	if(isset($xml->body) && strlen(trim($xml->body)) >= 1){
 		$module_parameters = array();
 		$module_parameters['from'] = isset($attr->from) ? trim($attr->from) : false;
 		$module_parameters['to'] = isset($attr->to) ? trim($attr->to) : false;
